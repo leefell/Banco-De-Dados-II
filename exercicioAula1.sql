@@ -66,3 +66,23 @@ UPDATE CURSO SET idCurso = 10
 -- Atualiza o nome da aluna Ana com prontuario 11gg
 UPDATE ALUNO SET nome = 'Ana Paula'
 	WHERE prontuario = '11gg';
+----------------------------------------------------------------
+
+-- Exercícios Arquivo cidadesBrasil.sql
+UPDATE cidadesBrasil SET populacao = 900000
+	WHERE nomeCidade = 'Campo Grande';
+	
+UPDATE cidadesBrasil SET idhm = 0.81
+	WHERE nomeCidade = 'Palmas';
+	
+UPDATE cidadesBrasil SET idhm = 0.77, escolarizacao = 0.96 
+	WHERE nomeCidade = 'Salvador';
+	
+DELETE FROM cidadesBrasil 
+	WHERE idhm < 0.6;
+	
+DELETE FROM cidadesBrasil
+	WHERE populacao < 20000;
+	
+DELETE FROM cidadesBrasil
+	WHERE idhm < 0.7 AND regiao = 'Sudeste';
