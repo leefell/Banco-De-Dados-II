@@ -1,0 +1,26 @@
+Tipos de dados no SQL
+
+- Integer: inteiros
+- Real, numeric, number: numeros decimais
+- Boolean: t ou f
+- Date: data
+- varchar() e character varying(): sequencia de caracteres
+- char: apenas um caracter
+- Timestamp: data + hora
+
+Tabelas, INSERT, DELETE e UPDATE
+
+Create: 
+- Cria banco de dados(CREATE nomeDoBanco) 
+- Tabelas (CREATE nomeDaTabela(nomeColuna1 tipodeDado[restrição], nomeColuna2 tipodeDados[restrição]) restrição é opcional 
+
+- Restrições: PRIMARY KEY, FOREIGN KEY, NOT NULL, CHECK, DEFAULT
+
+Exemplo de query:
+CREATE TABLE LIVRO(ISBN INTEGER, titulo VARCHAR(50), CONSTRAINT PK_LIVRO PRIMARY KEY(ISBN));
+
+Delete:
+Delete from nomeTabela WHERE nomeColuna = valorColuna
+
+UPDATE:
+UPDATE nomeTabela SET nomeColuna=valorNovo WHERE coluna=valor
