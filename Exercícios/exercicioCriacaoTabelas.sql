@@ -40,7 +40,6 @@ CREATE TABLE CLIENTE
     nro INTEGER,
     cidade VARCHAR(30),
     CEP VARCHAR(30),
-    dtaLanc DATE,
     CONSTRAINT pk_cliente PRIMARY KEY (codCliente)
 );
 
@@ -61,8 +60,11 @@ CREATE TABLE CLIENTE_has_EXEMPLAR
     dtaDev DATE,
     CONSTRAINT fk_nroExemplar FOREIGN KEY(nroExemplar, codFilme) REFERENCES EXEMPLAR(nroExemplar, codFilme),
     CONSTRAINT fk_codFilme FOREIGN KEY(codFilme) REFERENCES FILME(codFilme),
-    CONSTRAINT pk_CLIENTE_has_EXEMPLAR PRIMARY KEY(nroExemplar, codFilme, codCliente)
+	CONSTRAINT fk_codCliente FOREIGN KEY(codCliente) REFERENCES CLIENTE(codCliente),
+    CONSTRAINT pk_CLIENTE_has_EXEMPLAR PRIMARY KEY(codCliente, dtaEmpr, nroExemplar, codFilme)
 );
+
+---------------------------------------
 
 CREATE TABLE proprietario
 (
@@ -76,7 +78,7 @@ CREATE TABLE fisico
     cod_propri INTEGER,
     CPF INTEGER UNIQUE,
     CONSTRAINT fk_proprietario FOREIGN KEY(cod_propri) REFERENCES proprietario(cod_propri),
-    CONSTRAINT pk_fisico PRIMARY KEY(cod_propri, CPF)
+    CONSTRAINT pk_fisico PRIMARY KEY(cod_propri)
 );
 
 CREATE TABLE juridico
@@ -84,7 +86,7 @@ CREATE TABLE juridico
     cod_propri INTEGER,
     CNPJ INTEGER UNIQUE,
     CONSTRAINT fk_proprietario FOREIGN KEY(cod_propri) REFERENCES proprietario(cod_propri),
-    CONSTRAINT pk_juridico PRIMARY KEY(cod_propri, CNPJ)
+    CONSTRAINT pk_juridico PRIMARY KEY(cod_propri)
 );
 
 CREATE TABLE veiculo
