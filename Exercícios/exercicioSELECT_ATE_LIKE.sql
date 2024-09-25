@@ -36,3 +36,39 @@ DELETE FROM REMEDIO
 	WHERE preco > 20 OR laboratorio = 'FARMASA';
 	
 -- 10
+
+CREATE TABLE PAIS(nome VARCHAR (50), 
+				  capital VARCHAR (50) NOT NULL,
+				  populacao real, 
+				  idh real, 
+				  continente varchar (30), 
+				  CONSTRAINT PK_PAIS PRIMARY KEY (nome));
+				  
+-- 10
+SELECT nome, capital FROM PAIS
+	WHERE nome LIKE '_i%' OR nome LIKE '%i%';
+
+-- 11
+SELECT nome FROM PAIS
+	WHERE nome LIKE '%a%a';
+	
+-- 12
+SELECT nome FROM PAIS
+	WHERE nome LIKE '%r' 
+	OR populacao < 10 
+	OR continente = 'Ásia'
+	ORDER BY NOME ASC;
+
+-- 13
+SELECT nome FROM PAIS
+	WHERE nome LIKE '%i%' AND idh > 0.7 AND populacao > 20; 
+	
+-- 14 
+SELECT nome FROM PAIS
+	WHERE nome LIKE '%'
+	OR idh BETWEEN 0.4 AND 0.7
+	ORDER BY idh ASC;
+	
+-- 15
+SELECT nome, continente, populacao FROM PAIS
+	WHERE n
