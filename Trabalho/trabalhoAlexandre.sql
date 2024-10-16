@@ -115,3 +115,31 @@ FROM cidadesBrasil
 WHERE nomeCidade LIKE 'A%'  
    OR nomeCidade LIKE '%r%'    
    OR nomeCidade LIKE '%i_'; 
+
+-- 11
+SELECT a.nome AS nomeAtor, f.nome AS nomeFilme FROM Ator a
+INNER JOIN atorEstrelaFilme af ON a.idator = af.idator
+INNER JOIN FILME f ON af.codFilme = f.codFilme;
+
+-- 12
+SELECT a.nome AS nomeAtor, COUNT(a.idAtor) as quantidadeFilmes FROM Ator a
+INNER JOIN atorEstrelaFilme af ON a.idator = af.idator
+GROUP BY (a.nome);
+
+-- 13
+SELECT c.nome AS nomeCliente, telefone FROM Cliente c
+INNER JOIN telefoneCliente t ON c.codcliente = t.codcliente;
+
+-- 14
+SELECT c.nome AS nomeCliente, f.nome as nomeFilme FROM Cliente c
+INNER JOIN clientealugaexemplarfilme cf ON cf.codcliente = c.codcliente
+INNER JOIN Filme f ON f.codfilme = cf.codfilme;
+
+-- 15
+SELECT c.nome AS nomeCliente, f.nome AS nomeFilme, a.nome AS nomeAtor
+FROM Cliente c
+INNER JOIN clienteAlugaExemplarFilme cf ON cf.codCliente = c.codcliente
+INNER JOIN Filme f ON f.codfilme = cf.codfilme
+INNER JOIN atorEstrelaFilme aef ON aef.codfilme = f.codfilme
+INNER JOIN Ator a ON a.idator = aef.idator
+WHERE a.nome LIKE '%r%';
