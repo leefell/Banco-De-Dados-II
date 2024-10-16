@@ -45,7 +45,6 @@ CREATE TABLE RESERVASLIVRO
 );
 
 -- 2 
-
 INSERT INTO LIVRO (ISBN, titulo, nroPgs, ano, edicao) VALUES
 (1234567890, 'Introdução à Programação', 300, 2020, 2),
 (1234567891, 'Banco de Dados Avançado', 450, 2019, 1),
@@ -73,3 +72,46 @@ INSERT INTO RESERVASLIVRO (ISBN, prontuario, dtaRes, dtaDev) VALUES
 (1234567892, 'SP12347', '2024-10-03', '2024-10-17'),
 (1234567893, 'SP12348', '2024-10-04', '2024-10-18'),
 (1234567894, 'SP12349', '2024-10-05', '2024-10-19');
+
+-- 3
+UPDATE cidadesBrasil 
+SET idhm = 0.85 
+WHERE nomeCidade = 'Florianópolis';
+
+-- 4
+UPDATE cidadesBrasil
+SET populacao = 900000
+WHERE nomeCidade = 'Teresina';
+
+-- 5
+DELETE FROM cidadesBrasil
+WHERE idhm < 0.5;
+
+-- 6
+SELECT nomeCidade, idhm FROM cidadesBrasil
+WHERE regiao = 'Sul' OR idhm < 0.7
+ORDER BY idhm ASC;
+
+-- 7
+SELECT nomeCidade, populacao, idhm FROM cidadesBrasil
+WHERE regiao = 'Nordeste' 
+AND idhm BETWEEN 0.5 AND 0.8 
+and populacao > 20000
+ORDER BY populacao DESC;
+
+-- 8
+SELECT regiao, COUNT(nomeCidade) FROM cidadesBrasil
+GROUP BY regiao;
+
+-- 9
+SELECT regiao, sum(populacao)
+FROM cidadesBrasil
+GROUP BY regiao
+HAVING sum(populacao) > 100000;
+
+-- 10
+SELECT nomeCidade
+FROM cidadesBrasil
+WHERE nomeCidade LIKE 'A%'  
+   OR nomeCidade LIKE '%r%'    
+   OR nomeCidade LIKE '%i_'; 
